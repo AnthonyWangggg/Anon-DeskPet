@@ -1,0 +1,41 @@
+{
+  "unit_tests": 9,
+  "native_gui": {
+    "sprite_window": "passed",
+    "click": "passed",
+    "no_window_drift": "passed",
+    "metrics": "passed",
+    "pause": "passed",
+    "settings_dialog": "passed",
+    "cubism_official_haru_model": "passed",
+    "cubism_opengl_alpha": "passed",
+    "cubism_to_sprite_fallback": "passed"
+  },
+  "frozen_executable": {
+    "frozen_preview": "passed",
+    "frozen_sprite_startup": "passed",
+    "frozen_cubism_startup": "passed",
+    "frozen_anon_startup": "passed"
+  },
+  "character_backend": "Cubism MOC3 whole-body expression model; sprite fallback available",
+  "anon_moc3_created": true,
+  "packaging_fix": "Exclude unrelated toolchain ICU, UCRT and API-set DLLs; use Windows system libraries",
+  "anon_model": {
+    "model": "C:\\Users\\94763\\Desktop\\DeskPet_Claude\\assets\\live2d\\Anon\\Anon.model3.json",
+    "moc3_load": "passed",
+    "transparent_render": "passed",
+    "eye_parameter_changes_render": "passed",
+    "expressions": [
+      "idle",
+      "happy",
+      "angry",
+      "dizzy",
+      "love",
+      "surprised",
+      "wink"
+    ],
+    "expression_playback_and_reset": "passed",
+    "automatic_blink": "passed",
+    "scope": "Whole-body expression prototype; seven expressions and blink."
+  }
+}

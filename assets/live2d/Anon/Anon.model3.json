@@ -1,0 +1,61 @@
+{
+  "Version": 3,
+  "FileReferences": {
+    "Moc": "Anon.moc3",
+    "Textures": [
+      "Anon.2048/texture_00.png"
+    ],
+    "DisplayInfo": "Anon.cdi3.json",
+    "Expressions": [
+      {
+        "Name": "idle",
+        "File": "expressions/idle.exp3.json"
+      },
+      {
+        "Name": "happy",
+        "File": "expressions/happy.exp3.json"
+      },
+      {
+        "Name": "angry",
+        "File": "expressions/angry.exp3.json"
+      },
+      {
+        "Name": "dizzy",
+        "File": "expressions/dizzy.exp3.json"
+      },
+      {
+        "Name": "love",
+        "File": "expressions/love.exp3.json"
+      },
+      {
+        "Name": "surprised",
+        "File": "expressions/surprised.exp3.json"
+      },
+      {
+        "Name": "wink",
+        "File": "expressions/wink.exp3.json"
+      }
+    ]
+  },
+  "Groups": [
+    {
+      "Target": "Parameter",
+      "Name": "EyeBlink",
+      "Ids": [
+        "ParamEyeLOpen"
+      ]
+    }
+  ],
+  "DeskPet": {
+    "DiscreteExpressions": {
+      "idle": 0,
+      "happy": 1,
+      "angry": 2,
+      "dizzy": 3,
+      "love": 4,
+      "surprised": 5,
+      "wink": 6
+    },
+    "ExpressionParameter": "ParamExpression"
+  }
+}

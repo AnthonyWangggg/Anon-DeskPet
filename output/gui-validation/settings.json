@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "scale_percent": 80,
+  "position": [
+    1248,
+    470
+  ],
+  "always_on_top": true,
+  "show_metrics": false,
+  "follow_pointer": true,
+  "bubbles": true,
+  "fps": 30,
+  "live2d_model": "",
+  "apps": []
+}

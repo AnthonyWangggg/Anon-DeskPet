@@ -1,0 +1,11 @@
+{
+  "sprite_window": "passed",
+  "click": "passed",
+  "no_window_drift": "passed",
+  "metrics": "passed",
+  "pause": "passed",
+  "settings_dialog": "passed",
+  "cubism_official_haru_model": "passed",
+  "cubism_opengl_alpha": "passed",
+  "cubism_to_sprite_fallback": "passed"
+}

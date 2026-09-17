@@ -1,0 +1,18 @@
+{
+  "model": "C:\\Users\\94763\\Desktop\\DeskPet_Claude\\assets\\live2d\\Anon\\Anon.model3.json",
+  "moc3_load": "passed",
+  "transparent_render": "passed",
+  "eye_parameter_changes_render": "passed",
+  "expressions": [
+    "idle",
+    "happy",
+    "angry",
+    "dizzy",
+    "love",
+    "surprised",
+    "wink"
+  ],
+  "expression_playback_and_reset": "passed",
+  "automatic_blink": "passed",
+  "scope": "Whole-body expression prototype; seven expressions and blink."
+}

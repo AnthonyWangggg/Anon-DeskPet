@@ -1,0 +1,89 @@
+{
+  "editor": "Cubism 5.3.04 FREE",
+  "target_sdk": "SDK5.0/Cubism5.0",
+  "runtime_core_tested": "5.1.0",
+  "psd": "Anon_Expression_Starter.psd",
+  "color_mode": "RGB",
+  "bits_per_channel": 8,
+  "color_profile": "sRGB",
+  "canvas": [
+    362,
+    543
+  ],
+  "layers": [
+    {
+      "name": "07_wink",
+      "expression": "wink",
+      "opacity": 0,
+      "width": 362,
+      "height": 543,
+      "kind": "whole-body-expression-frame"
+    },
+    {
+      "name": "06_surprised",
+      "expression": "surprised",
+      "opacity": 0,
+      "width": 362,
+      "height": 543,
+      "kind": "whole-body-expression-frame"
+    },
+    {
+      "name": "05_love",
+      "expression": "love",
+      "opacity": 0,
+      "width": 362,
+      "height": 543,
+      "kind": "whole-body-expression-frame"
+    },
+    {
+      "name": "04_dizzy",
+      "expression": "dizzy",
+      "opacity": 0,
+      "width": 362,
+      "height": 543,
+      "kind": "whole-body-expression-frame"
+    },
+    {
+      "name": "03_angry",
+      "expression": "angry",
+      "opacity": 0,
+      "width": 362,
+      "height": 543,
+      "kind": "whole-body-expression-frame"
+    },
+    {
+      "name": "02_happy",
+      "expression": "happy",
+      "opacity": 0,
+      "width": 362,
+      "height": 543,
+      "kind": "whole-body-expression-frame"
+    },
+    {
+      "name": "01_blink",
+      "expression": "blink",
+      "opacity": 0,
+      "width": 362,
+      "height": 543,
+      "kind": "whole-body-expression-frame"
+    },
+    {
+      "name": "00_idle",
+      "expression": "idle",
+      "opacity": 255,
+      "width": 362,
+      "height": 543,
+      "kind": "whole-body-expression-frame"
+    }
+  ],
+  "status": "PSD is initial whole-body artwork; cmo3 now has seven expression bindings and blink",
+  "validation": "PSD decoded and all 8 layers compared pixel-for-pixel with source PNGs",
+  "free_limits": {
+    "artmeshes": 100,
+    "parameters": 30,
+    "deformers": 50,
+    "part_folders": 30,
+    "texture_atlases": 1,
+    "texture_edge": 2048
+  }
+}

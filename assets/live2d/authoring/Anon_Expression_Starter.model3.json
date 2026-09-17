@@ -1,0 +1,10 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "Anon_Expression_Starter.moc3",
+		"Textures": [
+			"Anon_Expression_Starter.2048/texture_00.png"
+		],
+		"DisplayInfo": "Anon_Expression_Starter.cdi3.json"
+	}
+}
