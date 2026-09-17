@@ -143,6 +143,7 @@ class Pet(QWidget):
         if self.cubism:
             self.cubism.paused = self.animator.paused
             self.cubism.trigger_expression(self.animator.expression)
+            self.cubism.set_pose(self.animator.pose())
             center = self.cubism.rect().center()
             pointer = self.cubism.mapFromGlobal(QCursor.pos()) if self.config.follow_pointer else center
             self.cubism.set_pointer(pointer.x(), pointer.y())
@@ -364,7 +365,7 @@ class Pet(QWidget):
             label.setText(f"桌宠大小  {value}%")
             self.resize_for_scale()
         slider.valueChanged.connect(scale)
-        for key, caption in (("always_on_top", "始终置顶"), ("follow_pointer", "跟随鼠标轻轻转头"), ("bubbles", "显示互动对话气泡")):
+        for key, caption in (("always_on_top", "始终置顶"), ("follow_pointer", "跟随鼠标轻轻摆动"), ("bubbles", "显示互动对话气泡")):
             checkbox = QCheckBox(caption)
             checkbox.setChecked(getattr(self.config, key))
             checkbox.toggled.connect(lambda value, name=key: self.set_option(name, value))
@@ -451,7 +452,10 @@ class Pet(QWidget):
             self.cubism.frame_timer.setInterval(round(1000 / value))
 
     def model_status(self):
-        return "Live2D · " + Path(self.config.live2d_model).stem if self.cubism else "当前角色：爱音 · 2D 表情动画"
+        if self.cubism:
+            name = "爱音" if self.config.live2d_model in ('', 'builtin') else Path(self.config.live2d_model).stem
+            return "Live2D · " + name
+        return "当前角色：爱音 · 2D 表情动画"
 
     def unload_cubism(self):
         if self.cubism:

@@ -36,6 +36,7 @@
     ],
     "expression_playback_and_reset": "passed",
     "automatic_blink": "passed",
+    "motion_bounds_and_pause": "passed",
     "scope": "Whole-body expression prototype; seven expressions and blink."
   }
 }

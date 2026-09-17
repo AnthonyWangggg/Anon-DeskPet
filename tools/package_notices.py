@@ -2,9 +2,10 @@
 from importlib import metadata
 from pathlib import Path
 import shutil
+import sys
 
 root = Path(__file__).resolve().parent.parent
-package = root / 'dist' / 'AnonDeskPet'
+package = root / (sys.argv[1] if len(sys.argv) > 1 else 'dist/AnonDeskPet')
 if not (package / 'AnonDeskPet.exe').exists():
     raise SystemExit('Build the executable before copying notices.')
 licenses = package / 'licenses'

@@ -8,6 +8,7 @@ sys.path.insert(0, str(ROOT))
 from PySide6.QtWidgets import QApplication, QWidget
 from PySide6.QtTest import QTest
 from deskpet.cubism import create_cubism_widget, validate_model
+from deskpet.animation import Pose
 
 app = QApplication([])
 out = ROOT / 'output/anon-model-validation'
@@ -67,10 +68,33 @@ try:
             blink_seen = True
             break
     assert blink_seen, 'Automatic blink did not change rendering'
+    widget.model.SetAutoBlinkEnable(False)
+    motion_images = []
+    for index, (tilt, bounce, pointer) in enumerate([(-7, -12, -1), (7, 2, 1), (0, 0, 0)]):
+        widget.set_pose(Pose('idle', 0, pointer, 0, bounce, tilt))
+        QTest.qWait(150)
+        picture = widget.grabFramebuffer()
+        picture.save(str(out / f'motion-{index}.png'))
+        motion_images.append(bytes(picture.constBits()))
+        # Every edge should remain transparent even at the largest motion.
+        w, h = picture.width(), picture.height()
+        edges = [(x, y) for x in range(w) for y in (0, h - 1)]
+        edges += [(x, y) for y in range(h) for x in (0, w - 1)]
+        assert all(picture.pixelColor(x, y).alpha() == 0 for x, y in edges), 'Motion clipped at viewport edge'
+    assert len(set(motion_images)) == 3, 'Whole-body motion not rendered'
+    QTest.qWait(200)
+    picture = widget.grabFramebuffer()
+    assert bytes(picture.constBits()) == motion_images[-1], 'Transforms accumulate across frames'
+    widget.paused = True
+    widget.set_pose(Pose('idle', 1, 1, 0, -12, 7))
+    QTest.qWait(200)
+    picture = widget.grabFramebuffer()
+    assert bytes(picture.constBits()) == motion_images[-1], 'Pause changed rendered pose'
     report = {'model': str(path), 'moc3_load': 'passed', 'transparent_render': 'passed',
               'eye_parameter_changes_render': 'passed',
               'expressions': expressions,
               'expression_playback_and_reset': 'passed', 'automatic_blink': 'passed',
+              'motion_bounds_and_pause': 'passed',
               'scope': 'Whole-body expression prototype; seven expressions and blink.'}
     (out / 'report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf8')
     print(json.dumps(report, ensure_ascii=False))

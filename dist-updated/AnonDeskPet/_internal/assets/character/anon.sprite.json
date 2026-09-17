@@ -1,0 +1,9 @@
+{
+  "format": "deskpet-sprite-atlas-v1",
+  "name": "千早爱音",
+  "texture": "anon-atlas.png",
+  "grid": [4, 2],
+  "frames": {"idle": 0, "blink": 1, "happy": 2, "angry": 3, "dizzy": 4, "love": 5, "surprised": 6, "wink": 7},
+  "source": "User-provided anon_temp.png; reconstructed with built-in image generation",
+  "note": "Transparent expression sprites with procedural animation; not a Live2D Cubism moc3 model."
+}

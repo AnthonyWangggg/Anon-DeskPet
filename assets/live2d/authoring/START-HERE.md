@@ -9,6 +9,7 @@
 - ParamEyeLOpen：日常状态下 0 闭眼、1 睁眼。
 
 默认桌宠加载爱音 Live2D，设置中可切换图片模式或导入其他模型。
+Live2D 模式现支持整体待机起伏、鼠标跟随摆动、开心/惊讶弹跳、生气轻抖和晕眩摇摆；动作预留边距，暂停后保持姿态。以上是运行时整体变换，不是头发或身体部位的独立绑定。
 重新导出到 assets/live2d/Anon/Anon.moc3 后，运行 tools/prepare_anon_runtime.py 补齐表情描述和 EyeBlink 参数组，再运行 tests/anon_model_smoke.py 验证。
 导出选 SDK 5.0，勾选导出隐藏的图形网格。继续编辑请打开 cmo3，不要重新导入 PSD 覆盖绑定。
 

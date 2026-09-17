@@ -1,10 +1,11 @@
 """Smoke-test the frozen executable with isolated settings and a time limit."""
 import json
 import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-exe = ROOT / 'dist/AnonDeskPet/AnonDeskPet.exe'
+exe = ROOT / (sys.argv[1] if len(sys.argv) > 1 else 'dist/AnonDeskPet/AnonDeskPet.exe')
 output = ROOT / 'output/package-validation'
 output.mkdir(parents=True, exist_ok=True)
 

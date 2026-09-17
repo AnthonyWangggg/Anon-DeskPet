@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 
 
@@ -81,6 +82,7 @@ def create_cubism_widget(path: str, parent, fps: int = 30):
             self.applied_expression = None
             self.expression_ids = []
             self.motion_groups = []
+            self.pose = None
             self.frame_timer = QTimer(self)
             self.frame_timer.timeout.connect(self.update)
             self.frame_timer.start(round(1000 / fps))
@@ -132,7 +134,19 @@ def create_cubism_widget(path: str, parent, fps: int = 30):
                 values = metadata.get('DiscreteExpressions', {})
                 if self.expression in values:
                     self.model.SetParameterValue(metadata['ExpressionParameter'], values[self.expression])
+                if metadata.get('WholeBodyMotion') and self.pose is not None:
+                    pose = self.pose
+                    # Reserve margin for movement. These are absolute model
+                    # transforms, not changes to the desktop window position.
+                    scale = .91 + .004 * math.sin(pose.phase * 2)
+                    self.model.SetScale(scale)
+                    self.model.Rotate(-max(-7, min(7, pose.tilt)))
+                    self.model.SetOffset(pose.pointer_x * .018,
+                                         -.015 - pose.bounce / 543 * 1.5)
             self.model.Draw()
+
+        def set_pose(self, pose):
+            self.pose = pose
 
         def set_pointer(self, x, y):
             self.pointer = (x, y)

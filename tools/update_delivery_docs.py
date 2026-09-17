@@ -13,6 +13,7 @@ note = '''# 爱音 Live2D 表情模型
 - ParamEyeLOpen：日常状态下 0 闭眼、1 睁眼。
 
 默认桌宠加载爱音 Live2D，设置中可切换图片模式或导入其他模型。
+Live2D 模式现支持整体待机起伏、鼠标跟随摆动、开心/惊讶弹跳、生气轻抖和晕眩摇摆；动作预留边距，暂停后保持姿态。以上是运行时整体变换，不是头发或身体部位的独立绑定。
 重新导出到 assets/live2d/Anon/Anon.moc3 后，运行 tools/prepare_anon_runtime.py 补齐表情描述和 EyeBlink 参数组，再运行 tests/anon_model_smoke.py 验证。
 导出选 SDK 5.0，勾选导出隐藏的图形网格。继续编辑请打开 cmo3，不要重新导入 PSD 覆盖绑定。
 
@@ -28,6 +29,10 @@ for i, line in enumerate(lines):
     if line.startswith('爱音标准模型仍需'):
         lines[i] = '爱音工程位于 `assets/live2d/authoring/Anon_Expression_Starter.cmo3`，最新运行模型位于 `assets/live2d/Anon/Anon.model3.json`。已在 Cubism Editor 5.3.04 FREE 中绑定，以 SDK 5.0 导出。重新导出后运行 `tools/prepare_anon_runtime.py`，再运行 `tests/anon_model_smoke.py` 验证。详细限制与编辑说明见 `assets/live2d/README.md`。'
 path.write_text('\n'.join(lines) + '\n', encoding='utf8')
+text = path.read_text(encoding='utf8')
+section = '\n## Live2D 动态更新\n\n新增整体待机起伏、鼠标跟随摆动、开心/惊讶弹跳、生气轻抖和晕眩摇摆。动作留有边距，窗口位置不随动画漂移，暂停保持当前姿态。这些是运行时整体变换，不是独立头发物理或眼球绑定。\n'
+if '## Live2D 动态更新' not in text:
+    path.write_text(text + section, encoding='utf8')
 path = root / 'assets/live2d/authoring/starter-manifest.json'
 data = json.loads(path.read_text(encoding='utf8'))
 data['status'] = 'PSD is initial whole-body artwork; cmo3 now has seven expression bindings and blink'
